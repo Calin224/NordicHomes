@@ -11,6 +11,3 @@ def add_to_cart(request, product_id):
 
 def cart(request):
     return render(request, 'cart/cart.html')
-
-def checkout(request):
-    return render(request, 'cart/checkout.html')
