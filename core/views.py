@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from product.models import Category, Product
 from django.db.models import Q
 from .forms import SignUpForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login
+
 
 # Create your views here.
 
@@ -13,6 +15,7 @@ def frontpage(request):
     }
     return render(request, 'core/frontpage.html', context)
 
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -21,36 +24,51 @@ def signup(request):
             login(request, user)
             return redirect('/')
     else:
-        form=SignUpForm()
-            
+        form = SignUpForm()
+
     context = {
         'form': form,
     }
     return render(request, 'core/signup.html', context)
 
 
-def login_old(request):
-    context = {}
-    return render(request, 'core/login.html', context)
+@login_required
+def myaccount(request):
+    return render(request, 'core/myaccount.html')
+
+
+@login_required
+def edit_myaccount(request):
+    if request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.email = request.POST.get('email')
+        user.username = request.POST.get('username')
+        user.save()
+
+        return redirect('myaccount')
+
+    return render(request, 'core/edit_myaccount.html')
 
 
 def shop(request):
     products = Product.objects.all()
     categories = Category.objects.all()
-    
+
     active_category = request.GET.get('category', '')
-    
+
     if active_category:
         products = products.filter(category__slug=active_category)
-     
-    query = request.GET.get('query', '') 
-    
+
+    query = request.GET.get('query', '')
+
     if query:
         products = products.filter(
-            Q(name__icontains=query) | 
+            Q(name__icontains=query) |
             Q(description__icontains=query)
         )
-    
+
     context = {
         'categories': categories,
         'products': products,
@@ -59,6 +77,4 @@ def shop(request):
     return render(request, 'core/shop.html', context)
 
 
-
-
-############### 7:55 - part 10
+########### part 15 .......
