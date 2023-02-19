@@ -22,7 +22,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('/')
+            return redirect('frontpage')
     else:
         form = SignUpForm()
 
@@ -77,4 +77,4 @@ def shop(request):
     return render(request, 'core/shop.html', context)
 
 
-########### part 15 .......
+# part 15: 13:52
