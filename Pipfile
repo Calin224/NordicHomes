@@ -8,6 +8,7 @@ django = "*"
 pillow = "*"
 sentry-sdk = "*"
 stripe = "*"
+gunicorn = "*"
 
 [dev-packages]
 
