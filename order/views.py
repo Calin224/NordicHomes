@@ -58,7 +58,7 @@ def start_order(request):
                                  phone=phone, address=address, place=place, zipcode=zipcode)
     order.payment_intent = payment_intent
     order.paid_amount = total_price
-    order.paid = True
+    order.paid=  True
     order.save()
 
     for item in cart:
@@ -68,5 +68,7 @@ def start_order(request):
 
         item = OrderItem.objects.create(
             order=order, product=product, price=price, quantity=quantity)
+
+    cart.clear()
 
     return JsonResponse({'session': session, 'order': payment_intent})

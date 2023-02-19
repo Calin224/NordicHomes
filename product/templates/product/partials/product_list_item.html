@@ -1,7 +1,7 @@
 <div class="flex justify-between p-6">
     <div class="flex justify-between flex-col ">
         <a href="{% url 'product' product.slug %}">
-            <img src="{{product.get_thumbnail}}" alt="" class="rounded-xl hover:shadow-lg transition-all">
+            <img src="{{product.get_thumbnail}}" alt="" class="w-full rounded-xl hover:shadow-lg transition-all">
         </a>
 
         <div class="pt-3 flex items-center justify-between">
@@ -23,7 +23,7 @@
             </a>
         </div>
 
-        <p class="pt-1 text-gray-400">${{ product.get_display_price }}</p>
+        <p class="pt-1 text-gray-400">{{ product.get_display_price }} lei</p>
     </div>
 
 </div>
