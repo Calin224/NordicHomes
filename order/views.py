@@ -23,7 +23,7 @@ def start_order(request):
 
         obj = {
             'price_data': {
-                'currency': 'usd',
+                'currency': 'ron',
                 'product_data': {
                     'name': product.name,
                 },
