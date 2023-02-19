@@ -52,6 +52,8 @@ LOGIN_URL = '/login/'
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 7 days
 CART_SESSION_ID = 'cart'
+STRIPE_API_KEY_PUBLISHABLE = 'pk_test_51MdB3tInUMetBnlgGpx5vg9FFeNL1NXxslAjiSj83nwtszg43tvrP9eQxtv44hhbcoDPKq1bh53bKm5k2pvgo2Wk00wDiYxVLn'
+STRIPE_API_KEY_HIDDEN = 'sk_test_51MdB3tInUMetBnlgp1dzxb9pUnsfYqjJcT2GjeCOqnghYGIeN5CLGegFpLTeuV3ygyfrOIZAr9vAB4ktRDlI3oeB00qUzukTXH'
 
 # Application definition
 
