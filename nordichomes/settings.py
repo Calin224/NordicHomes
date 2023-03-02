@@ -46,6 +46,7 @@ SECRET_KEY = 'django-insecure-u$v=&ha9@1w0tu--lcl9h##irwiz)zipgsg41hj!*qpek3lxe(
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['*']
 
 LOGOUT_REDIRECT_URL = 'frontpage'
 LOGIN_REDIRECT_URL = 'frontpage'
