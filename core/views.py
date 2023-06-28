@@ -15,6 +15,9 @@ def frontpage(request):
     }
     return render(request, 'core/frontpage.html', context)
 
+def contactPage(request):
+    return render(request, 'core/contact.html')
+
 
 def signup(request):
     if request.method == 'POST':
@@ -77,4 +80,3 @@ def shop(request):
     return render(request, 'core/shop.html', context)
 
 
-# part 15: 13:52

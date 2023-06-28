@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
@@ -7,73 +8,127 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>{% block title %}{% endblock title %} | Nordic Homes</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        html{
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-<nav class="border-b border-gray-300">
-    <div class="max-w-6xl mx-auto py-2 px-6 xl:px-0 flex items-center justify-between">
-        <div class="menu-left flex items-center space-x-6">
-            <a href="{% url 'frontpage' %}" class="py-4 text-lg text-teal-500 font-semibold">Nordic Home</a>
+    <nav class="border-b border-gray-300">
+        <div class="flex justify-center flex-col items-center py-7 space-y-8">
+            <div class="space-y-4">
+                <a href="{% url 'frontpage' %}" class="py-4 text-lg text-teal-500 font-semibold">
+                    <img src="{% static '/logo-s.png' %}" alt="logo"  />
+                </a>
 
-            <ul class="flex items-center space-x-4">
-                <li><a href="{% url 'shop' %}">Shop</a></li>
-                <li><a href="#">About</a></li>
+                <ul class="flex items-center justify-center space-x-4">
+                    <li><a href="{% url 'shop' %}">Produse</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
 
 
-                {% if request.user.is_authenticated %}
+                    {% if request.user.is_authenticated %}
                     <li><a href="{% url 'logout' %}"
-                           class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-lg">Logout</a></li>
-                {% endif %}
+                            class="px-4 py-2 bg-teal-500 hover:bg-teal-700 text-white rounded-lg">Logout</a></li>
+                    {% endif %}
 
-            </ul>
-        </div>
-
-        <div class="menu-right flex items-center space-x-4">
-            <a href="{% url 'myaccount' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-
-            </a>
-
-            <div hx-get="{% url 'hx_menu_cart' %}" hx-trigger="update-menu-cart from:body" hx-swap="innerHTML">
-                {% include 'cart/partials/menu_cart.html' %}
+                </ul>
             </div>
 
+            <div class="menu-right flex items-center space-x-4">
+                <a href="{% url 'myaccount' %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+
+                </a>
+
+                <div hx-get="{% url 'hx_menu_cart' %}" hx-trigger="update-menu-cart from:body" hx-swap="innerHTML" >
+                    {% include 'cart/partials/menu_cart.html' %}
+                </div>
+
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<main>
-    {% block content %}{% endblock content %}
-</main>
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
 
-<footer class="bg-gray-100">
-    <div class="max-w-6xl mx-auto py-10 px-6 xl:px-0 md:flex justify-between">
-        <div class="footer-left mb-12 md:mb-0">
-            <h2 class="mb-5 uppercase text-lg">about us</h2>
-            <p class="text-gray-700">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit
-                amet consectetur.</p>
+    <footer class="">
+        <div class="mt-12">
+            <footer aria-label="Site Footer" class="bg-gray-100">
+                <div class="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
+                    <div class="lg:flex lg:items-end lg:justify-between">
+                        <div>
+                            <div class="flex justify-center text-teal-600 lg:justify-start">
+                                <Image src="{% static '/logo-s.png' %}" alt="logo" width={150} height={150} />
+                            </div>
+
+                            <p class="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 lg:text-left">
+                                Vizitează online o florărie pentru Craiova
+                                atunci când dorești să trimiți simplu și rapid
+                                buchete de flori sau aranjamente florale pentru
+                                aniversări, nunți sau botezuri, sau când dorești
+                                să îi faci o bucurie persoanei iubite. Ne
+                                mândrim cu o livrare rapidă de flori în Craiova,
+                                pentru situațiile când dorești să faci un cadou
+                                deosebit și elegant unei ființe dragi
+                            </p>
+                            <div class="mt-2 text-black/[0.6] font-bold flex space-x-3">
+                                <a href="https://anpc.ro/" target="_blank">A.N.P.C</a>
+                                <Link href="/politica_confidentialitate">Politica de Confidentialitate</Link>
+                            </div>
+                        </div>
+                        <nav aria-label="Footer Nav" class="mt-12 lg:mt-0">
+                            <ul class="flex flex-wrap justify-center gap-6 md:gap-8 lg:justify-end lg:gap-12">
+                                <li>
+                                    <Link class="text-gray-700 transition hover:text-gray-700/75" href="/">
+                                    Acasa
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link class="text-gray-700 transition hover:text-gray-700/75" href="/produse">
+                                    Produse
+                                    </Link>
+                                </li>
+
+                                <li>
+                                    <Link class="text-gray-700 transition hover:text-gray-700/75" href="/contact">
+                                    Contact
+                                    </Link>
+                                </li>
+                            </ul>
+                            <div class="w-full flex lg:justify-end mt-4 justify-center">
+                                <img src="{% static '/carduri.png' %}" class="w-[250px] h-[150px]" />
+                            </div>
+                            <div class="flex flex-col items-center lg:items-end">
+                                <div class="text-sm mt-2 text-right">Cont ALPHA BANK ROMANIA</div>
+                                <div class="text-rose-400 text-right">RO53BUCU1921304256136RON</div>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <p class="mt-12 text-center text-sm text-gray-500 lg:text-right">
+                        Copyright &copy; 2023. Toate drepturile rezervate.
+                    </p>
+                </div>
+            </footer>
         </div>
+    </footer>
 
-        <div class="footer-right">
-            <h2 class="mb-5 uppercase text-lg">social links</h2>
-            <ul class="space-y-2">
-                <li><a href="#" class="text-teal-500 hover:text-teal-800">facebook</a></li>
-                <li><a href="#" class="text-teal-500 hover:text-teal-800">twitter</a></li>
-                <li><a href="#" class="text-teal-500 hover:text-teal-800">instagram</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
+    <script src="https://unpkg.com/htmx.org@1.8.5"></script>
 
-<script src="https://unpkg.com/htmx.org@1.8.5"></script>
+    {% block scripts %}
 
-{% block scripts %}
-
-{% endblock %}
+    {% endblock %}
 </body>
 
 </html>

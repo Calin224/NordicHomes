@@ -1,20 +1,21 @@
 {% extends 'core/base.html' %}
 
+{% load static %}
 {% block title %}Welcome{% endblock title %}
 
 {% block content %}
-<header class="px-6 py-10 lg:py-20 bg-teal-500 ">
+<header class="px-6 py-10 lg:py-20 bg-[url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')] ">
     <div class="max-w-6xl mx-auto xl:px-0">
         <div class="lg:flex justify-between items-center">
             <div class="lg:w-1/2">
-                <h1 class="text-4xl lg:text-6xl text-white font-bold mb-6">Nordic Homes</h1>
+                <h1 class="text-4xl lg:text-6xl text-white font-bold mb-6">Floraria Adraiana</h1>
                 <p class="text-gray-200 text-lg mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Lorem ipsum dolor sit amet consectetur.</p>
-                <a href="#" class="bg-teal-600 text-white py-3 px-6 rounded hover:bg-teal-700">Shop Now</a>
+                <a href="{% url 'shop' %}" class="bg-teal-600 text-white py-3 px-6 rounded hover:bg-teal-700">Cumparati Acum</a>
             </div>
 
             <div class="lg:w-1/2 mt-10 lg:mt-0">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                <img src="https://images.unsplash.com/photo-1454262041357-5d96f50a2f27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80"
                     alt="nordic home"
                     class="rounded-lg hover:shadow-xl hover:shadow-teal-100 transition-all hover:-translate-y-6">
             </div>
@@ -22,12 +23,77 @@
     </div>
 </header>
 
-<div class="max-2-6xl mx-auto py-2 px-6 xl:px-0">
-    <div class="products flex items-center justify-center flex-wrap flex-row">
-        {% for product in products %}
-            {% include 'product/partials/product_list_item.html' %}
-        {% endfor %}
-    </div>
+<div class="flex justify-center items-center flex-col space-y-4 py-12"> 
+    <h1 class="text-3xl">Comenzile on-line</h1>
+    <div class="border-t border-white"></div>
+    <p class="max-w-4xl text-center">
+        După configurarea și trimiterea comenzii de pe site, în urma
+        unui contact telefonic, când vă ve-ți prezenta la punctul
+        nostru de lucru pentru ridicarea comenzii aceasta este deja
+        pregătită.
+    </p>
+    <button class="flex flex-row items-center justify-center space-x-3 bg-rose-200 px-7 py-3 rounded-xl">
+        <Link href='/produse'>Comanda online</Link> 
+        <AiOutlineShoppingCart /> 
+    </button>
 </div>
+
+<section>
+    <div class="bg-[url('https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] py-12 bg-cover flex justify-center items-center bg-fixed mb-12">
+        <h1 class="text-center text-4xl text-white font-bold">
+            Oferta zilei
+        </h1>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 place-items-center max-w-6xl mx-auto gap-10">
+        <div class="w-full max-w-sm bg-white border-gray-200 rounded-lg shadow ">
+            <a href="#">
+                <img
+                    class="p-8 rounded-xl max-h-[350px] min-h-[350px]"
+                    src="{% static '/news-13.jpg' %}"
+                    alt="product image"
+                />
+            </a>
+            <div class="px-5 pb-5">
+                <a href="#">
+                    <h5 class="text-xl font-semibold tracking-tight text-gray-900">
+                        Buchete cu gerbera
+                    </h5>
+                </a>
+            </div>
+        </div>
+        <div class="w-full max-w-sm bg-white border-gray-200 rounded-lg shadow ">
+            <a href="#">
+                <img
+                    class="p-8 rounded-lg max-h-[350px] min-h-[350px]"
+                    src="{% static '/news-11.jpg' %}"
+                    alt="product image"
+                />
+            </a>
+            <div class="px-5 pb-5">
+                <a href="#">
+                    <h5 class="text-xl font-semibold tracking-tight text-gray-900">
+                        Buchete cu crizantemă
+                    </h5>
+                </a>
+            </div>
+        </div>
+        <div class="w-full max-w-sm bg-white border-gray-200 rounded-lg shadow ">
+            <a href="#">
+                <img
+                    class="p-8 rounded-lg max-h-[350px] min-h-[350px]"
+                    src="{% static '/news-14.jpg' %}"
+                    alt="product image"
+                />
+            </a>
+            <div class="px-5 pb-5">
+                <a href="#">
+                    <h5 class="text-xl font-semibold tracking-tight text-gray-900">
+                        Buchete cu frezia
+                    </h5>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}

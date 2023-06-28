@@ -59,7 +59,6 @@ STRIPE_API_KEY_HIDDEN = 'sk_test_51MdB3tInUMetBnlgp1dzxb9pUnsfYqjJcT2GjeCOqnghYG
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -69,6 +68,8 @@ INSTALLED_APPS = [
     'product',
     'cart',
     'order',
+    'jazzmin',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +147,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
+STATICFILES_DIRS = [BASE_DIR / 'static/']
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type

@@ -5,28 +5,75 @@
 
 {% block content %}
 
-<div class="max-2-6xl mx-auto flex flex-wrap items-start py-6 px-6 ">
-    <div class="products w-full lg:w-3/4">
-        {% for item in cart %}
-        {% include 'cart/partials/cart_item.html' %}
-        {% endfor %}
-    </div>
-
-    <div class="summary w-full lg:w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
-        <h2 class="uppercase text-lg mb-5">Summary</h2>
-
-        <div class="mb-6 flex justify-between">
-            <span class="font-semibold">Total</span>
-            <span>
-                <div hx-get="{% url 'hx_cart_total' %}" hx-trigger="update-menu-cart from:body" hx-swap="innerHTML">
-                    {% include 'cart/partials/cart_total.html' %}
-                </div>
-            </span>
+<div class="w-full md:py-20">
+    <div class="w-full max-w-[1280px] px-5 md:px-10 mx-auto">
+        <div
+            class="flex justify-center items-center max-w-6xl rounded-xl shadow text-white mx-auto mt-2 md:mt-0 bg-[url('https://images.unsplash.com/photo-1442458017215-285b83f65851?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80')] py-6">
+            <div class="text-[28px] md:text-[34px] font-semibold leading-tight">
+                Cosul de cumparaturi
+            </div>
         </div>
 
-        <a href="{% url 'checkout' %}"
-            class="inline-block px-8 py-4 rounded-xl bg-teal-500 hover:bg-teal-700 text-white">Checkout</a>
+        <div class="flex flex-col lg:flex-row gap-12 py-10">
+            <div class="flex-[2]">
+                <div class="text-lg font-bold pb-5">Produse</div>
+                {% for item in cart %}
+                {% include 'cart/partials/cart_item.html' %}
+                {% endfor %}
+            </div>
+
+
+            <div class="flex-[1]">
+                <div class="text-lg font-bold">Rezumat</div>
+
+                <div class="p-5 my-5 bg-black/[0.05] rounded-xl">
+                    <div class="flex justify-between">
+                        <div class="uppercase text-md md:text-lg font-medium text-black">
+                            total de plata
+                        </div>
+                        <div class="uppercase text-md md:text-lg font-medium text-black">
+                            <span>
+                                <div hx-get="{% url 'hx_cart_total' %}" hx-trigger="update-menu-cart from:body"
+                                    hx-swap="innerHTML">
+                                    {% include 'cart/partials/cart_total.html' %}
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="text-sm md:text-md py-5 border-t mt-5">
+                        După configurarea și trimiterea comenzii de pe site, în urma unui contact telefonic, când vă
+                        ve-ți prezenta la punctul nostru de lucru pentru ridicarea comenzii aceasta este deja pregătită.
+                    </div>
+
+                </div>
+                <a href="{% url 'checkout' %}"
+                    class="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75">
+                    Plateste
+                </a>
+            </div>
+
+            <!-- 
+            <div class="summary w-full lg:w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
+                <h2 class="uppercase text-lg mb-5">Rezumat</h2>
+
+                <div class="mb-6 flex justify-between">
+                    <span class="font-semibold">SUBTOTAL</span>
+                    <span>
+                        <div hx-get="{% url 'hx_cart_total' %}" hx-trigger="update-menu-cart from:body"
+                            hx-swap="innerHTML">
+                            {% include 'cart/partials/cart_total.html' %}
+                        </div>
+                    </span>
+                </div>
+
+                <a href="{% url 'checkout' %}"
+                    class="inline-block px-8 py-4 rounded-xl bg-teal-500 hover:bg-teal-700 text-white">Checkout</a>
+            </div> -->
+        </div>
     </div>
+
 </div>
+
+
 
 {% endblock %}

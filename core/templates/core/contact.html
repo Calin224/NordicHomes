@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Contact{% endblock title %}
+
+
+{% block content %}
+<section class=" flex justify-center items-center w-[100%]">
+    <section
+        class=" relative grid grid-cols-1 lg:grid-cols-3 bg-gray-200 mt-14 py-12 px-10 gap-10 w-[90%] rounded-xl shadow-2xl">
+        <img src="{% static '/relative-image.png' %}" class="absolute -bottom-10 -right-10" />
+        <div class="lg:col-span-2 h-[60vh]">
+            <div class="h-[100%]">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2854.6494062123124!2d23.81340777613147!3d44.31715750923609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4752d7c23f6907d3%3A0x755b01a5246aeeb7!2sTrei%20Flori%20Srl%20-%20Adriana!5e0!3m2!1sro!2sro!4v1687958503164!5m2!1sro!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="w-[100%] h-[100%]">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="lg:col-span-1 flex items-start flex-col justify-center">
+            <h1 class="font-bold text-lg mb-4">Contact</h1>
+
+            <div>
+                <div class="flex flex-col space-y-1">
+                    <h1>Adresa</h1>
+                    <p>Calea București, Nr.99</p>
+                    <p>Modul nr.2</p>
+                    <p>Craiova, Dolj</p>
+                    <p>
+                        <span>Orange: </span>0751 296 292
+                    </p>
+                    <p>
+                        <span>Vodafone: </span>0730 024 298
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock %}

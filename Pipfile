@@ -10,6 +10,7 @@ sentry-sdk = "*"
 stripe = "*"
 gunicorn = "*"
 whitenoise = "*"
+django-jazzmin = "*"
 
 [dev-packages]
 
